@@ -6,16 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-/**
- * TODO
- *
- * @Description
- * @Author laizhenghua
- * @Date 2023/7/2 20:52
- **/
 @Configuration
-@EnableConfigurationProperties(DemoConfiguration.Security.class)
-public class DemoConfiguration {
+@EnableConfigurationProperties(PictureFilterConfiguration.Security.class)
+public class PictureFilterConfiguration {
 
     @ConfigurationProperties(prefix = "picture-filter.security")
     public static class Security {

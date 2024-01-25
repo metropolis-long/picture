@@ -7,23 +7,18 @@ import org.bamboo.result.R;
 import org.bamboo.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    @DubboReference
+//    @Autowired
     private AuthService authService;
 
-    @PostMapping("/login")
-    public R login(@RequestBody JSONObject params) {
-        String username = params.getString("username");
-        String password = params.getString("password");
+    @GetMapping("/login")
+    public R login(String username,String password ){
+        System.out.println("username = " + username + ", password = " + password);
         if (!StringUtils.hasText(username) || !StringUtils.hasText(password)) {
             return R.error(500, "用户名或密码为空！");
         }

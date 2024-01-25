@@ -37,7 +37,7 @@ public class ImageController {
     @Value("${files.picture.url-prefix}")
     private String urlPrefix;
 
-    @DubboReference(version = "1.0")
+    @DubboReference
     private ImageService imageService;
     @PostMapping("/upload")
     public Object uploadImage(String imageTitle,String tag,MultipartFile img, HttpServletRequest request) throws IOException {

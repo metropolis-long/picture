@@ -6,22 +6,8 @@ import org.bamboo.pojo.UserEntity;
 import org.bamboo.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-
-import java.util.Date;
-
-/**
- * TODO
- *
- * @Description
- * @Author laizhenghua
- * @Date 2023/7/2 17:00
- **/
-//@DubboService
+@DubboService
 public class UserServiceImpl  implements UserService {
-    @Autowired
-    private PasswordEncoder passwordEncoder;
     @Autowired
     private UserMapper userMapper;
 
@@ -31,7 +17,6 @@ public class UserServiceImpl  implements UserService {
     }
 
     public UserEntity saveUser(UserEntity entity) {
-        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
         UserEntity user = userMapper.getUserByName(entity.getUsername());
         if (null == user) {
             userMapper.saveUser(entity);

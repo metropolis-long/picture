@@ -1,4 +1,4 @@
-package org.bamboo.config;
+package org.bamboo.otherconfig;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.session.events.SessionCreatedEvent;
@@ -7,7 +7,7 @@ import org.springframework.session.events.SessionDestroyedEvent;
 import org.springframework.session.events.SessionExpiredEvent;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class SessionEventListener {
 
     @EventListener

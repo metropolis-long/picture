@@ -3,16 +3,16 @@ server:
 spring:
   application:
     name: consumer-app
-  security:
-    user:
-      name: root
-      password: 123
+#  security:
+#    user:
+#      name: root
+#      password: 123
   servlet:
     multipart:
       max-file-size: 10MB  #每个文件大小
       max-request-size: 30MB  #请求上传文件总量
-    session:
-      timeout: 8640*30
+#    session:
+#      timeout: 8640*30
   data:
     redis:
       database: 0
@@ -24,11 +24,11 @@ spring:
           max-active: 10 #最大连接数
           min-idle: 2    #最小空闲数
       timeout: 2000   #连接超时
-  session:
-    store-type: redis
-    redis:
-      flush-mode: on-save
-      namespace: spring:session
+#  session:
+#    store-type: redis
+#    redis:
+#      flush-mode: on-save
+#      namespace: spring:session
 dubbo:
   application:
     qos-enable: false
@@ -63,3 +63,5 @@ picture-filter:
       - /swagger-resources/**
       - /v2/*
       - /csrf
+      - /favicon.ico
+      - /api/img/**

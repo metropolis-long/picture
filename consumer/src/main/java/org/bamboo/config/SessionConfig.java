@@ -34,12 +34,8 @@ import java.util.Collection;
 import java.util.Set;
 //import org.springframework.security.jackson2.SecurityJackson2Modules;
 
-/**
- * @author jitendra on 3/3/16.
- */
-// tag::class[]
-@Configuration
-@EnableRedisIndexedHttpSession
+//@Configuration
+//@EnableRedisIndexedHttpSession
 public class SessionConfig implements BeanClassLoaderAware {
 	private ClassLoader loader;
 //	@Autowired

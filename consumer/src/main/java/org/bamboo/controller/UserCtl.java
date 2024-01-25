@@ -28,20 +28,7 @@ public class UserCtl {
 
     @DubboReference
     private StreamObserverService streamObserverService;
-    private final AuthenticationManager authenticationManager;
 
-    public UserCtl(AuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<Void> login(@AuthenticationPrincipal Account account) {
-        Authentication authenticationRequest =
-                UsernamePasswordAuthenticationToken.unauthenticated(account.getUsername(), account.getPassword());
-        Authentication authenticationResponse = this.authenticationManager.authenticate(authenticationRequest);
-        ResponseEntity responseEntity = new ResponseEntity(HttpStatusCode.valueOf(200));
-        return responseEntity;
-    }
     @GetMapping("/time")
     public String get(){
 

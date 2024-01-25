@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@Component
+//@Component
 public class AuthenticationExceptionHandler implements AuthenticationEntryPoint {
     Logger log = LoggerFactory.getLogger(getClass());
     @Override
@@ -25,6 +25,7 @@ public class AuthenticationExceptionHandler implements AuthenticationEntryPoint 
     }
 
     private void fallback(String message, HttpServletResponse response) {
+        System.out.println("auth fail A");
         response.setCharacterEncoding("UTF-8");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         PrintWriter writer = null;

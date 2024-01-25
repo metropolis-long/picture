@@ -6,7 +6,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.bamboo.config.DemoConfiguration;
+import org.bamboo.config.PictureFilterConfiguration;
 import org.bamboo.constant.RedisKey;
 import org.bamboo.dto.SecurityUser;
 import org.bamboo.result.R;
@@ -21,29 +21,23 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-/**
- * TODO
- *
- * @Description
- * @Author laizhenghua
- * @Date 2023/7/2 19:51
- **/
-@Component
+//@Component
 public class TokenFilter extends OncePerRequestFilter {
     private Logger log = LoggerFactory.getLogger(getClass());
     private AntPathMatcher pathMatcher = new AntPathMatcher();
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @Autowired
-    private DemoConfiguration.Security security;
+    private PictureFilterConfiguration.Security security;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -51,10 +45,10 @@ public class TokenFilter extends OncePerRequestFilter {
         log.info("intercept " + request.getRequestURI());
 
         // token=1用于swagger页面调用API
-        /*if (!StringUtils.hasText(token) || "1".equals(token)) {
-            filterChain.doFilter(request, response);
-            return;
-        }*/
+//        if (!StringUtils.hasText(token) || "1".equals(token)) {
+//            filterChain.doFilter(request, response);
+//            return;
+//        }
         // 判断是否是放行请求
         if (isFilterRequest(request)) {
             filterChain.doFilter(request, response);
@@ -70,10 +64,12 @@ public class TokenFilter extends OncePerRequestFilter {
         }
         String username = claims.getSubject();
         String cache = (String) redisTemplate.opsForValue().get(String.format(RedisKey.AUTH_TOKEN_KEY, username));
+        System.out.println("auth b");
         if (cache == null) {
             fallback("token失效，请重新登录！", response);
             return;
         }
+        System.out.println("auth c");
         SecurityUser user = JSON.parseObject(cache, SecurityUser.class);
         log.info(JSON.toJSONString(user, true));
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user, null, null);
@@ -83,6 +79,7 @@ public class TokenFilter extends OncePerRequestFilter {
     }
 
     private void fallback(String message, HttpServletResponse response) {
+        System.out.println("fallback...........");
         response.setCharacterEncoding("UTF-8");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         PrintWriter writer = null;
@@ -113,6 +110,7 @@ public class TokenFilter extends OncePerRequestFilter {
             String pattern = contextPath + path;
             pattern = pattern.replaceAll("/+", "/");
             if (pathMatcher.match(pattern, filterPath)) {
+                System.out.println("pass.........");
                 return true;
             }
         }

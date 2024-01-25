@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.bamboo.config;
+package org.bamboo.otherconfig;
 
 import java.security.Principal;
 
