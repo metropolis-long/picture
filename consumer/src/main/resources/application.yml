@@ -1,0 +1,65 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: consumer-app
+  security:
+    user:
+      name: root
+      password: 123
+  servlet:
+    multipart:
+      max-file-size: 10MB  #每个文件大小
+      max-request-size: 30MB  #请求上传文件总量
+    session:
+      timeout: 8640*30
+  data:
+    redis:
+      database: 0
+      port: 6379
+      host: 127.0.0.1
+      jedis:
+        pool:
+          max-idle: 6    #最大空闲数
+          max-active: 10 #最大连接数
+          min-idle: 2    #最小空闲数
+      timeout: 2000   #连接超时
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on-save
+      namespace: spring:session
+dubbo:
+  application:
+    qos-enable: false
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    timeout: 5000000
+    # 新加的参数
+    parameters:
+      blockUntilConnectedWait: 9999999
+  protocol:
+    name: dubbo
+#    port: -1
+
+
+config-app:
+  file: F:\\temp\\outer-file.properties
+
+files:
+  picture:
+    path: D:\\temp\\picture\\
+    source-path: source
+    small-path: small
+    url-prefix: http://localhost//
+
+
+picture-filter:
+  security:
+    permit-all-path:
+      - /auth/**
+      - /swagger-ui.html
+      - /webjars/**
+      - /swagger-resources/**
+      - /v2/*
+      - /csrf
