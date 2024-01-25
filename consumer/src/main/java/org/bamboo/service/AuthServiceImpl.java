@@ -18,7 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 class AuthServiceImpl implements AuthService {
     Logger log = LoggerFactory.getLogger(getClass());
     @Autowired

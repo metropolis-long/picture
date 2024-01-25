@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-//@Component
+@Component
 public class TokenFilter extends OncePerRequestFilter {
     private Logger log = LoggerFactory.getLogger(getClass());
     private AntPathMatcher pathMatcher = new AntPathMatcher();

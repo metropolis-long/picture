@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  *
  * @author Rob Winch
  */
-//@ControllerAdvice
+@ControllerAdvice
 public class SecurityControllerAdvise {
 
 	@ModelAttribute("currentUserName")

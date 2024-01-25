@@ -18,8 +18,8 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
-//@Configuration
-//@EnableWebSecurity
+@Configuration
+@EnableWebSecurity
 public class SecurityConfig {
     @Autowired
     private AuthenticationExceptionHandler authenticationExceptionHandler;
