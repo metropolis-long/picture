@@ -40,6 +40,7 @@ dubbo:
       blockUntilConnectedWait: 9999999
   protocol:
     name: dubbo
+    serialization: fastjson2
 #    port: -1
 
 
@@ -65,3 +66,4 @@ picture-filter:
       - /csrf
       - /favicon.ico
       - /api/img/**
+      - /tt/**

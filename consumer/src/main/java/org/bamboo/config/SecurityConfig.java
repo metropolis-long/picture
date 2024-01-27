@@ -2,6 +2,7 @@ package org.bamboo.config;
 
 import org.bamboo.filter.TokenFilter;
 import org.bamboo.handler.AuthenticationExceptionHandler;
+import org.bamboo.profile.PictureFilterConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

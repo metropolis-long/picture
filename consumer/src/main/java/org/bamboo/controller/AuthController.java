@@ -19,10 +19,10 @@ public class AuthController {
     @GetMapping("/login")
     public R login(String username,String password ){
         System.out.println("username = " + username + ", password = " + password);
-        if (!StringUtils.hasText(username) || !StringUtils.hasText(password)) {
-            return R.error(500, "用户名或密码为空！");
-        }
-        String token = authService.login(username, password);
+//        if (!StringUtils.hasText(username) || !StringUtils.hasText(password)) {
+//            return R.error(500, "用户名或密码为空！");
+//        }
+        String token = authService.login("1", "2");
         return R.success(token);
     }
 

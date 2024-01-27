@@ -1,14 +1,11 @@
 package org.bamboo.filter;
 
 import com.alibaba.fastjson.JSON;
-import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.bamboo.config.PictureFilterConfiguration;
-import org.bamboo.constant.RedisKey;
-import org.bamboo.dto.SecurityUser;
+import org.bamboo.profile.PictureFilterConfiguration;
 import org.bamboo.result.R;
 import org.bamboo.tools.JwtUtil;
 import org.slf4j.Logger;
@@ -16,12 +13,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.MediaType;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -54,26 +48,26 @@ public class TokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-        Claims claims = null;
-        try {
-            claims = JwtUtil.parseToken(token);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            fallback("token解析失败(非法token)！", response);
-            return;
-        }
-        String username = claims.getSubject();
-        String cache = (String) redisTemplate.opsForValue().get(String.format(RedisKey.AUTH_TOKEN_KEY, username));
+//        Claims claims = null;
+//        try {
+//            claims = JwtUtil.parseToken(token);
+//        } catch (Exception e) {
+//            log.error(e.getMessage());
+//            fallback("token解析失败(非法token)！", response);
+//            return;
+//        }
+//        String username = claims.getSubject();
+//        String cache = (String) redisTemplate.opsForValue().get(String.format(RedisKey.AUTH_TOKEN_KEY, username));
         System.out.println("auth b");
-        if (cache == null) {
-            fallback("token失效，请重新登录！", response);
-            return;
-        }
+//        if (cache == null) {
+//            fallback("token失效，请重新登录！", response);
+//            return;
+//        }
         System.out.println("auth c");
-        SecurityUser user = JSON.parseObject(cache, SecurityUser.class);
-        log.info(JSON.toJSONString(user, true));
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user, null, null);
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+//        SecurityUser user = JSON.parseObject(cache, SecurityUser.class);
+//        log.info(JSON.toJSONString(user, true));
+//        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user, null, null);
+//        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         // 放行
         filterChain.doFilter(request, response);
     }
