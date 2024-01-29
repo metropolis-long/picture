@@ -13,7 +13,8 @@
 
  Date: 25/01/2024 10:16:46
 */
-
+create database if not exists `picture`;
+use picture;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
