@@ -8,6 +8,7 @@ import org.bamboo.service.StreamObserverService;
 import org.bamboo.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,23 @@ public class UserCtl {
 
     @GetMapping("/login")
     public Object login(String name, String pwd){
-        return new Result(null,200,"ok");
+        HashMap token = new HashMap();
+        token.put("token","admin-token");
+        return new Result(token,200,"ok");
+    }
+
+    @GetMapping("/token")
+    public Object token(String name, String pwd){
+        HashMap token = new HashMap();
+        token.put("token","admin-token");
+        return new Result(token,200,"ok");
+    }
+
+    @GetMapping("/info")
+    public Object getInfo(String name, String pwd){
+        HashMap token = new HashMap();
+        token.put("token","admin-token");
+        return new Result(token,200,"ok");
     }
 
     @GetMapping("/time")
