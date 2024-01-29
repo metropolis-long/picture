@@ -54,9 +54,7 @@ public class FastJson2RedisSerializer<T> implements RedisSerializer<T> {
         return JSON.parseObject(
                 obj,
                 clazz,
-                JSONReader.autoTypeFilter(
-                        cls
-                ),
+                JSONReader.autoTypeFilter(cls),
                 JSONReader.Feature.SupportClassForName);
     }
 

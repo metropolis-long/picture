@@ -49,19 +49,9 @@
             <version>1.18.28</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>3.2.0</version>
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>com.alibaba.fastjson2</groupId>-->
-<!--                    <artifactId>fastjson2</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.apache.dubbo</groupId>
@@ -72,22 +62,6 @@
                     <groupId>org.apache.dubbo</groupId>
                     <artifactId>dubbo-serialization-api</artifactId>
                 </exclusion>
-<!--                <exclusion>-->
-<!--                    <groupId>org.apache.curator</groupId>-->
-<!--                    <artifactId>curator-framework</artifactId>-->
-<!--                </exclusion>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.apache.curator</groupId>-->
-<!--                    <artifactId>curator-x-discovery</artifactId>-->
-<!--                </exclusion>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.apache.curator</groupId>-->
-<!--                    <artifactId>curator-recipes</artifactId>-->
-<!--                </exclusion>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.apache.dubbo</groupId>-->
-<!--                    <artifactId>dubbo-rpc-api</artifactId>-->
-<!--                </exclusion>-->
             </exclusions>
         </dependency>
         <dependency>
@@ -109,10 +83,6 @@
                     <groupId>org.apache.zookeeper</groupId>
                     <artifactId>zookeeper</artifactId>
                 </exclusion>
-<!--                <exclusion>-->
-<!--                    <groupId>org.apache.curator</groupId>-->
-<!--                    <artifactId>curator-recipes</artifactId>-->
-<!--                </exclusion>-->
             </exclusions>
         </dependency>
 

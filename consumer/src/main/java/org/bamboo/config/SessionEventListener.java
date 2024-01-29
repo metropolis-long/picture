@@ -1,4 +1,4 @@
-package org.bamboo.otherconfig;
+package org.bamboo.config;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.session.events.SessionCreatedEvent;

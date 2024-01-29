@@ -3,10 +3,6 @@ server:
 spring:
   application:
     name: consumer-app
-  security:
-    user:
-      name: root
-      password: 123
   servlet:
     multipart:
       max-file-size: 10MB  #每个文件大小
@@ -54,16 +50,3 @@ files:
     small-path: small
     url-prefix: http://localhost//
 
-
-picture-filter:
-  security:
-    permit-all-path:
-      - /auth/**
-      - /swagger-ui.html
-      - /webjars/**
-      - /swagger-resources/**
-      - /v2/*
-      - /csrf
-      - /favicon.ico
-      - /api/img/**
-      - /tt/**

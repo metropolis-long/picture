@@ -22,37 +22,13 @@ import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.jackson2.SecurityJackson2Modules;
-import org.springframework.session.FindByIndexNameSessionRepository;
-import org.springframework.session.Session;
+
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisIndexedHttpSession;
-
-import java.security.Principal;
-import java.util.Collection;
-import java.util.Set;
-//import org.springframework.security.jackson2.SecurityJackson2Modules;
-
 @Configuration
 @EnableRedisIndexedHttpSession
 public class SessionConfig implements BeanClassLoaderAware {
 	private ClassLoader loader;
-//	@Autowired
-//	public FindByIndexNameSessionRepository<? extends Session> sessionRepository;
-//
-//	public Collection<? extends Session> getSessions(Principal principal) {
-//		Collection<? extends Session> usersSessions = this.sessionRepository.findByPrincipalName(principal.getName()).values();
-//		return usersSessions;
-//	}
-//
-//	public void removeSession(Principal principal, String sessionIdToDelete) {
-//		Set<String> usersSessionIds = this.sessionRepository.findByPrincipalName(principal.getName()).keySet();
-//		if (usersSessionIds.contains(sessionIdToDelete)) {
-//			this.sessionRepository.deleteById(sessionIdToDelete);
-//		}
-//	}
 	/**
 	 * Note that the bean name for this bean is intentionally
 	 * {@code springSessionDefaultRedisSerializer}. It must be named this way to override
@@ -72,7 +48,7 @@ public class SessionConfig implements BeanClassLoaderAware {
 	private ObjectMapper objectMapper() {
 		System.out.println(33333333333L);
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.registerModules(SecurityJackson2Modules.getModules(this.loader));
+//		mapper.registerModules(SecurityJackson2Modules.getModules(this.loader));
 		return mapper;
 	}
 

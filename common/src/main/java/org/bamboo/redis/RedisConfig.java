@@ -29,11 +29,8 @@ public class RedisConfig extends CachingConfigurerSupport {
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         serializer.setObjectMapper(mapper);
-        mapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
-        // String序列化的配置
-        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-
-
+        mapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance,
+                ObjectMapper.DefaultTyping.NON_FINAL);
 
         template.setValueSerializer(serializer);
         // 使用StringRedisSerializer序列化和反序列化redis的key值
