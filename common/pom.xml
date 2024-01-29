@@ -33,6 +33,16 @@
             <groupId>io.github.easy-do</groupId>
             <artifactId>data-redis-starter</artifactId>
             <version>1.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.objenesis</groupId>
+                    <artifactId>objenesis</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.javassist</groupId>
+                    <artifactId>javassist</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--图片简缩图-->
         <dependency>
@@ -55,6 +65,11 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.zhangquanli</groupId>
+            <artifactId>spring-security-extension-jwt</artifactId>
+            <version>0.1.0</version>
         </dependency>
     </dependencies>
     <build>

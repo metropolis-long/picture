@@ -33,14 +33,11 @@ public class SecurityControllerAdvise {
 
 	@ModelAttribute("currentUserName")
 	String currentUser(Principal principal) {
-		System.out.println((principal != null) ? principal.getName() : "000000000000000");
-		System.out.println(5555555);
 		return (principal != null) ? principal.getName() : null;
 	}
 
 	@ModelAttribute("httpSession")
 	HttpSession httpSession(HttpSession httpSession) {
-		System.out.println(44444444);
 		return httpSession;
 	}
 

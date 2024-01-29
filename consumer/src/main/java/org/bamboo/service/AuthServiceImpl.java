@@ -41,7 +41,7 @@ class AuthServiceImpl implements AuthService {
         // userEntity
         UserEntity userEntity = user.getUserEntity();
         String token = JwtUtil.createToken(userEntity.getSalt(), username, null);
-        redisCache.setCacheObject(token,user);
+//        redisCache.setCacheObject(token,user);
         return token;
     }
 

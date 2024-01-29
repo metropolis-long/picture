@@ -1,4 +1,4 @@
-package org.bamboo.config;
+package org.bamboo.profile;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
