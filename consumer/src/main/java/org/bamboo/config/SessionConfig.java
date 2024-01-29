@@ -24,6 +24,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.session.FindByIndexNameSessionRepository;
 import org.springframework.session.Session;
@@ -60,7 +61,7 @@ public class SessionConfig implements BeanClassLoaderAware {
 	@Bean
 	public RedisSerializer<Object> springSessionDefaultRedisSerializer() {
 		System.out.println(2222222222222222L);
-		return new GenericJackson2JsonRedisSerializer(objectMapper());
+		return new FastJson2RedisSerializer(Object.class);
 	}
 
 	/**
